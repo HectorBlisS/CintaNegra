@@ -20,6 +20,7 @@ class Team(models.Model):
 	grade = models.CharField(max_length =  50, blank = False, choices = GRADE_CHOICES)
 	slug = models.SlugField(max_length=102, blank=True, unique=True)
 
+
 	def __str__(self):
 		return self.name
 
@@ -41,14 +42,14 @@ class Leader(models.Model):
 
 	#Relations
 	school = models.ForeignKey(School, blank = False)
-	team = models.ForeignKey(Team)
+	team = models.ForeignKey(Team, null=True)
 
 	def __str__(self):
 		return (self.name)
 
 	def save(self, *args, **kwargs):
 		self.slug = defaultfilters.slugify(self.name + self.last_name)
-		super(Responsable, self).save(*args, **kwargs)
+		# super(Responsable, self).save(*args, **kwargs)
 
 class Kid(models.Model):
 	class Meta:
