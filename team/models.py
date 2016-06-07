@@ -57,7 +57,7 @@ class Kid(models.Model):
 		verbose_name_plural = "Kids"
 	
 	#Relations
-	team = models.ForeignKey(Team, related_name='kids')
+	team = models.ForeignKey(Team, related_name='kids', null=True, blank=True)
 
 	#Attributes
 	name = models.CharField(max_length = 50, blank = False)
