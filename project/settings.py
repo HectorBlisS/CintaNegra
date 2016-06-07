@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Apps
+    'corsheaders',
     'team',
     'school',
     'rest_framework',
@@ -43,6 +44,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # cors headers
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -143,12 +147,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 
-REST_FRAMEWORK = {
+# REST_FRAMEWORK = {
     
-        'DEFAULT_PERMISSION_CLASSES':[
-            'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-            ]
-}
+#         'DEFAULT_PERMISSION_CLASSES':[
+#             'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#             ]
+# }
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 
