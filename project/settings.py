@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'team',
     'school',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -147,12 +148,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 
-# REST_FRAMEWORK = {
+REST_FRAMEWORK = {
     
-#         'DEFAULT_PERMISSION_CLASSES':[
-#             'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-#             ]
-# }
+        # 'DEFAULT_PERMISSION_CLASSES':[
+        #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        #     ]
+
+        'DEFAULT_PERMISSION_CLASSES':(
+                'rest_framework.permissions.IsAuthenticated',
+            ),
+        'DEFAULT_AUTHENTICATION_CLASSES':(
+                'rest_framework.authentication.TokenAuthentication',
+            )
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 
